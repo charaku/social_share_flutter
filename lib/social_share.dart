@@ -103,9 +103,9 @@ class SocialShare {
     Map<String, dynamic> args;
     String modifiedUrl;
     if (Platform.isAndroid) {
-      modifiedUrl = Uri.parse(url!).toString().replaceAll('#', "%23");
+      modifiedUrl = Uri.parse(url).toString().replaceAll('#', "%23");
     } else {
-      modifiedUrl = Uri.parse(url!).toString();
+      modifiedUrl = Uri.parse(url).toString();
     }
     if (hashtags != null && hashtags.isNotEmpty) {
       String tags = "";
@@ -145,7 +145,7 @@ class SocialShare {
       }
     } else if (Platform.isAndroid) {
       args = <String, dynamic>{
-        "message": message + url! + trailingText!,
+        "message": message + url + trailingText,
       };
     }
     final String version = await _channel.invokeMethod('shareSms', args);
