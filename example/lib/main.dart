@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                   'Running on: $_platformVersion\n',
                   textAlign: TextAlign.center,
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     File file = await ImagePicker.pickImage(
                       source: ImageSource.gallery,
@@ -70,9 +70,10 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share On Instagram Story"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
-                    await screenshotController.capture().then((image) async {
+                    await screenshotController.capture().then((rawImage) async {
+                      final image = File.fromRawPath(rawImage);
                       SocialShare.shareInstagramStory(
                         image.path,
                         backgroundTopColor: "#ffffff",
@@ -86,9 +87,10 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share On Instagram Story with background"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
-                    await screenshotController.capture().then((image) async {
+                    await screenshotController.capture().then((rawImage) async {
+                      final image = File.fromRawPath(rawImage);
                       //facebook appId is mandatory for andorid or else share won't work
                       Platform.isAndroid
                           ? SocialShare.shareFacebookStory(
@@ -112,7 +114,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share On Facebook Story"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.copyToClipboard(
                       "This is Social Share plugin",
@@ -122,7 +124,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Copy to clipboard"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.shareTwitter(
                       "This is Social Share twitter example",
@@ -135,7 +137,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share on twitter"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.shareSms(
                       "This is Social Share Sms example",
@@ -147,7 +149,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share on Sms"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     await screenshotController.capture().then((image) async {
                       SocialShare.shareOptions("Hello world").then((data) {
@@ -157,7 +159,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share Options"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.shareWhatsapp(
                       "Hello World \n https://google.com",
@@ -167,7 +169,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share on Whatsapp"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.shareTelegram(
                       "Hello World \n https://google.com",
@@ -177,7 +179,7 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text("Share on Telegram"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     SocialShare.checkInstalledAppsForShare().then((data) {
                       print(data.toString());
