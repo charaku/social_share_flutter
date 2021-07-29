@@ -208,10 +208,10 @@ packages:
   social_share:
     dependency: "direct dev"
     description:
-      name: social_share
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
+      path: ".."
+      relative: true
+    source: path
+    version: "2.1.2"
   source_span:
     dependency: transitive
     description:
